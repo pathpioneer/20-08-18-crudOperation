@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        meta(charset = 'utf-8')
+        title Basic C R U D operation
+        style
+            include ../public/main.css
+    body
+        div
+            h6 Database : su_database
+            h6 Collection : articles
+            a(class = "delete" href = "http://localhost:3000/delete") Delete all documents
+        form(method = "post")
+            input(type = "text" placeholder = "title" name = "name_title" autocomplete = "off")
+            input(type = "text" placeholder = "author" name = "name_author" autocomplete = "off")
+            input(type = "text" placeholder = "discription" name = "name_discription" autocomplete = "off")
+            input(type = "submit" value = "Submit")
+        div(class = "show")
+            ul
+                each val in doc
+                    div(class = "content")
+                        h6= val.title
+                        h6= val.author
+                        h6= val.discription
+                        a(href = "http://localhost:3000/deletethis/"+ val.id) delete
+                        br
+                        a(href = "http://localhost:3000/edit/"+ val.id) edit
